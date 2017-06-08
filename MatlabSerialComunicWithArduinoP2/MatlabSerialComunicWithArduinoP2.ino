@@ -35,11 +35,13 @@ void loop() {
    {  
       //Serial.print ("AVB=");
       //Serial.println ( Serial.available() );
+      //while ( charReceiver != '\0')
+      //while ( charReceiver != 0)
       while ( charReceiver != '*')
       {
         while (Serial.available() == 0) {} // Espera que o Buffer tenha algo para realizar a leitura
         charReceiver = Serial.read(); // Lê os dados recebidos 
-        //Serial.print("charReceiver = "); 
+        Serial.print("charReceiver = "); 
         Serial.println(charReceiver);  
         //delay (100);    
         concatCharReceiver[i] = charReceiver;
@@ -47,7 +49,7 @@ void loop() {
         //Serial.println(i);
         i++;
       }
-      //Serial.println (i); 
+      //Serial.println ("Fim de Leitura"); 
       concatCharReceiver[i] = '\0';
       i = 0;
       //Serial.println(concatCharReceiver);
@@ -56,7 +58,9 @@ void loop() {
     
     floatDataReceiver = 2*floatDataReceiver;
     
-    Serial.println(floatDataReceiver);       
+    Serial.println(floatDataReceiver);   
+     Serial.println ("SIM");   
+     charReceiver = '0';    
       
     }   
 }
